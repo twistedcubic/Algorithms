@@ -39,3 +39,16 @@ public class QuickSort {
 	}
 	
 }
+
+/* Of course this would be less code in Python:
+ *
+ * def quicksort(list):
+ *   if len(list) <= 1:
+ *     return list
+ *   pivot = list[len(list)/2]
+ *   left = [x for x in list if x < pivot]
+ *   right = [x for x in list if x > pivot]
+ *   mid = [x for x in list if x == pivot]
+ *   return quicksort(left) + mid + quicksort(right)
+ *
+ */
