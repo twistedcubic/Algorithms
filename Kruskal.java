@@ -1,13 +1,13 @@
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-import java.util.Set;
-
 /* Kruskal's algorithm for finding
  * minimum spanning tree (MST) using 
  * union find.
  * Time complexity E log(E) and 
  * space complexity E
  */
+import java.util.ArrayList;
+import java.util.PriorityQueue;
+import java.util.Set;
+
 
 public class Kruskal {
 	//head of each element, may not be root
@@ -16,11 +16,12 @@ public class Kruskal {
 	//doesn't mean much if not i is 
 	//not a root
 	private int[] size;
-	Set<Edge> edges;
+	private Set<Edge> edges;
 	//min priority queue to store all edges
-	PriorityQueue<Edge> queue;
-	ArrayList<Edge> mst;
+	private PriorityQueue<Edge> queue;
+	private ArrayList<Edge> mst;
 	
+	//Set up
 	public Kruskal(Set<Edge> edges){
 		this.edges = edges;
 		WeightedGraph graph = new WeightedGraph(edges);
@@ -37,8 +38,9 @@ public class Kruskal {
 		mst = new ArrayList<Edge>();
 	}
 	
-	//find root (not just head) of component
-	//containing v
+	/* Find root (not just head) of component
+	 * containing v
+	 */
 	private int find(int v){
 		
 		while(v != head[v]){
@@ -47,7 +49,7 @@ public class Kruskal {
 		return v;
 	}
 	
-	/*Combine the components containing v, w
+	/* Combine the components containing v, w
 	 * according to their component sizes
 	 */
 	private void union(int v, int w){
@@ -66,7 +68,7 @@ public class Kruskal {
 		}
 	}
 	
-	/*runs Kruskal's algorithm.
+	/* Runs Kruskal's algorithm.
 	 * Greedily takes the next min weight edge
 	 */
 	public ArrayList<Edge> get_mst(){
