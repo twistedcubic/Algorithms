@@ -9,4 +9,5 @@ Included so far:
 - weighted (di)graphs
 - Kruskal's algorithm for finding MST
 - Prim's algorithm for finding MST
-- Dijkstra's algorithm for finding shortest paths
+- Dijkstra's algorithm for single-source shortest paths
+- Bellman Ford algorithm for single-source shortest paths
