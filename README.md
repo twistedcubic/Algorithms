@@ -6,6 +6,7 @@ Included so far:
 - merge sort
 - quick sort
 - max heap
-- weighted graph
+- weighted (di)graphs
 - Kruskal's algorithm for finding MST
 - Prim's algorithm for finding MST
+- Dijkstra's algorithm for finding shortest paths
