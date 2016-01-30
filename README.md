@@ -11,3 +11,4 @@ Included so far:
 - Prim's algorithm for finding MST
 - Dijkstra's algorithm for single-source shortest paths
 - Bellman Ford algorithm for single-source shortest paths
+- Rabin-Karp for substring matching, with rolling hash
