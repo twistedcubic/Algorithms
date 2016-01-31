@@ -1,5 +1,5 @@
 /* Rabin-Karp for string search.
- * Avg time O(n), with rolling hash function.
+ * Avg time O(n+m), with rolling hash function.
  * Worst time O(mn), where n = length(txt), 
  * m = length(pat)
  */
