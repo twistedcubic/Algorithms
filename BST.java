@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /* Binary search tree.
  * 
  */
@@ -51,7 +53,6 @@ public class BST<Key extends Comparable<Key>, Val> {
 	}
 	
 	//delete min element
-	//same logic for delete max
 	public void delete_min(){
 		if(root == null){
 			System.out.println("Tree empty!");
@@ -67,6 +68,21 @@ public class BST<Key extends Comparable<Key>, Val> {
 		return cur_node;
 	}
 
+	//delete max element
+	public void delete_max(){
+		if(root == null){
+			System.out.println("Tree empty!");
+			return;
+		}
+		root = delete_max(root);
+	}
+
+	public Node delete_max(Node cur_node){
+		if(cur_node.right == null)
+			return cur_node.left;
+		cur_node.right = delete_max(cur_node.right);
+		return cur_node;
+	}
 
 	/* insert key-value pair.
 	 * replace if key already in tree 
@@ -123,20 +139,32 @@ public class BST<Key extends Comparable<Key>, Val> {
 			if(cur_node.left == null)
 				return cur_node.right;
 
-			//get smallest successor						
-			Node temp_node = cur_node;
-			cur_node = get_successor(cur_node.right);
-			cur_node.left = temp_node.left;
-			//delete the immediate successor and set 
-			//the right node
-			cur_node.right = delete_min(temp_node.right);
-			//the old cur_node will get garbage-collected
+			Random rand = new Random();
+			boolean bool = rand.nextBoolean();
+			if(bool){
+				//get smallest successor						
+				Node temp_node = cur_node;
+				cur_node = get_successor(cur_node.right);
+				cur_node.left = temp_node.left;
+				//delete the immediate successor and set 
+				//the right node
+				cur_node.right = delete_min(temp_node.right);
+				//the old cur_node will get garbage-collected
+			}else{
+				//get largest predecessor						
+				Node temp_node = cur_node;
+				cur_node = get_predecessor(cur_node.left);
+				cur_node.right = temp_node.right;
+				//delete the immediate predecessor and set 
+				//the left node
+				cur_node.left = delete_max(temp_node.left);
+			}
 			
 		}
 		return cur_node;
 	}
 
-	//helper method used in delete 
+	//helper methods used in delete 
 	private Node get_successor(Node node){
 		if(node == null)
 			return null;
@@ -145,4 +173,11 @@ public class BST<Key extends Comparable<Key>, Val> {
 		return get_successor(node.left);
 	}
 	
+	private Node get_predecessor(Node node){
+		if(node == null)
+			return null;
+		if(node.right == null)
+			return node;
+		return get_successor(node.right);
+	}
 }
